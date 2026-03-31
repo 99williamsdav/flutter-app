@@ -98,7 +98,16 @@ export class PollingService {
 
     const date: string = moment().format('YYYY-MM-DD');
 
-    return fetch(this._url.replace(/DATE/g, date))
+    const url: string = this._url.replace(/DATE/g, date);
+    const options: RequestInit = {};
+
+    if (url.indexOf('https://flutterbot.co.uk/') === 0) {
+      options.headers = {
+        'Referer': 'https://flutterbot.co.uk/'
+      };
+    }
+
+    return fetch(url, options)
       .then(response => this.responseHandler(response))
       .then(newSummary => {
         this._updated = moment().format('HH:mm');
