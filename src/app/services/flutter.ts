@@ -66,4 +66,10 @@ export class FlutterService {
       total: this.formatCcy(this.inPlay.profit + this.overall.profit + this.snowball.profit)
     };
   }
+
+  public refreshAll(): void {
+    this.inPlay.refreshNow();
+    this.overall.refreshNow();
+    this.snowball.refreshNow();
+  }
 }

@@ -64,6 +64,15 @@ export class PollingService {
       .then(() => this.eventLoop());
   }
 
+  public refreshNow(): void {
+    if (this.pollTimeoutHandle) {
+      clearTimeout(this.pollTimeoutHandle);
+    }
+    this.poll()
+      .then(() => this.waitForPollDelay())
+      .then(() => this.eventLoop());
+  }
+
   private static getTrend(currentProfit: number, newProfit: number): boolean {
 
     switch(true) {
