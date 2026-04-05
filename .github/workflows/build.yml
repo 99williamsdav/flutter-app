@@ -28,7 +28,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Install Ionic CLI and Cordova
         run: npm install -g @ionic/cli cordova
