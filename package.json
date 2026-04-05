@@ -1,65 +1,27 @@
 {
-  "name": "flutter-app",
-  "version": "0.0.4",
-  "author": "Stephen Hazleton",
-  "homepage": "https://github.com/lathonez/flutter-app",
-  "private": true,
-  "scripts": {
-    "start": "ionic serve",
-    "clean": "ionic-app-scripts clean",
-    "build": "ionic-app-scripts build",
-    "lint": "ionic-app-scripts lint",
-    "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve",
-    "patch-small-icon": "mkdir -p platforms/android/app/src/main/res/drawable && cp src/assets/imgs/logo.png platforms/android/app/src/main/res/drawable"
-  },
   "dependencies": {
-    "@angular/common": "5.2.11",
-    "@angular/compiler": "5.2.11",
-    "@angular/compiler-cli": "9.0.0",
-    "@angular/core": "11.0.5",
-    "@angular/forms": "5.2.11",
-    "@angular/http": "5.2.11",
-    "@angular/platform-browser": "5.2.11",
-    "@angular/platform-browser-dynamic": "5.2.11",
-    "@ionic-native/core": "4.15.0",
-    "@ionic-native/local-notifications": "4.15.0",
-    "@ionic-native/splash-screen": "4.15.0",
-    "@ionic-native/status-bar": "4.15.0",
-    "@ionic/storage": "2.2.0",
-    "cordova-android": "9.0.0",
-    "cordova-plugin-badge": "^0.8.7",
-    "cordova-plugin-device": "^2.0.2",
-    "cordova-plugin-ionic-keyboard": "^2.1.3",
-    "cordova-plugin-ionic-webview": "^2.2.0",
-    "cordova-plugin-local-notification": "^0.9.0-beta.2",
-    "cordova-plugin-splashscreen": "^5.0.2",
-    "cordova-plugin-statusbar": "^2.4.2",
-    "cordova-plugin-whitelist": "^1.3.3",
-    "ionic-angular": "3.9.2",
-    "ionicons": "3.0.0",
-    "moment": "2.29.2",
-    "rxjs": "5.5.11",
-    "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.26"
-  },
-  "devDependencies": {
-    "@ionic/app-scripts": "3.2.4",
-    "typescript": "2.7.2"
-  },
-  "description": "An Ionic project",
-  "cordova": {
-    "plugins": {
-      "cordova-plugin-local-notification": {},
-      "cordova-plugin-whitelist": {},
-      "cordova-plugin-device": {},
-      "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-statusbar": {}
-    },
-    "platforms": [
-      "android"
-    ]
+    "@angular/core": "5.2.11"
+  , 
+    "@angular/common": "~5.2.11"
+  , 
+    "@angular/platform-browser": "~5.2.11"
+  , 
+    "@angular/platform-browser-dynamic": "~5.2.11"
+  , 
+    "@angular/http": "~5.2.11"
+  , 
+    "@angular/router": "~5.2.11"
+  , 
+    "ionic-angular": "3.9.11"
+  , 
+    "rxjs": "~5.5.10"
+  , 
+    "zone.js": "~0.8.29"
+  }
+, 
+ "devDependencies": {
+    "@angular/compiler-cli": "5.2.11"
+  , 
+    "typescript": "~2.4.2"
   }
 }
