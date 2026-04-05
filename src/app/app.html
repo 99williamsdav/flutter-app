@@ -1,18 +1,22 @@
-<ion-menu [content]="content">
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
 
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="true" *ngFor="let p of pages">
+            <ion-item button (click)="openPage(p)">{{ p.title }}</ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
 
-  <ion-content>
-    <ion-list>
-      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">{{p.title}}</button>
-    </ion-list>
-  </ion-content>
-
-</ion-menu>
-
-<ion-nav [root]="rootPage" #content></ion-nav>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
 

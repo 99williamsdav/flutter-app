@@ -1,28 +1,24 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
     "declaration": false,
-    "emitDecoratorMetadata": true,
+    "downlevelIteration": true,
     "experimentalDecorators": true,
-    "lib": [
-      "dom",
-      "es2015"
-    ],
-    "module": "es2015",
+    "emitDecoratorMetadata": true,
+    "importHelpers": true,
+    "lib": ["es2022", "dom"],
+    "module": "es2022",
     "moduleResolution": "node",
+    "skipLibCheck": true,
     "sourceMap": true,
-    "target": "es5"
+    "strict": false,
+    "target": "es2022",
+    "useDefineForClassFields": false
   },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "src/**/*.spec.ts",
-    "src/**/__tests__/*.ts"
-  ],
-  "compileOnSave": false,
-  "atom": {
-    "rewriteTsconfig": false
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": false,
+    "strictInputAccessModifiers": false,
+    "strictTemplates": false
   }
 }

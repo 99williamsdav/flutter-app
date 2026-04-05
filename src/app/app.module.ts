@@ -1,13 +1,15 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { FormsModule } from '@angular/forms';
+import { RouteReuseStrategy } from '@angular/router';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { FlutterApp } from './app.component';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 import { FlutterService } from './services/flutter';
 import { NotificationService } from './services/notification';
 
@@ -19,18 +21,14 @@ import { NotificationService } from './services/notification';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(FlutterApp)
+    FormsModule,
+    IonicModule.forRoot(),
+    AppRoutingModule
   ],
-  bootstrap: [IonicApp],
-  entryComponents: [
-    FlutterApp,
-    AboutPage,
-    HomePage,
-  ],
+  bootstrap: [FlutterApp],
   providers: [
     StatusBar,
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     FlutterService,
     NotificationService,
   ]

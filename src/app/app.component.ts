@@ -1,43 +1,33 @@
-import { Component, ViewChild } from '@angular/core';
-import { MenuController, Nav, Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { HomePage } from '../pages/home/home';
-import { AboutPage } from '../pages/about/about';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
+import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 import { NotificationService } from './services/notification';
 
 @Component({
+  selector: 'app-root',
   templateUrl: 'app.html'
 })
 export class FlutterApp {
 
-  @ViewChild(Nav) public nav: Nav;
-
-  public rootPage: any = HomePage;
-  public pages: Array<{ title: string, component: any }> = [
-    { title: 'Profit', component: HomePage },
-    { title: 'About', component: AboutPage },
+  public pages: Array<{ title: string; url: string }> = [
+    { title: 'Profit', url: '/home' },
+    { title: 'About', url: '/about' },
   ];
 
-  private menu: MenuController;
-  private notification: NotificationService;
-
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, menu: MenuController, notification: NotificationService) {
-
-    this.menu = menu;
-    this.notification = notification;
+  constructor(
+    platform: Platform,
+    private statusBar: StatusBar,
+    private router: Router,
+    private notification: NotificationService
+  ) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      splashScreen.hide();
+      this.statusBar.styleDefault();
     })
       .then(() => this.notification.init());
   }
 
-  public openPage(page: any): void {
-    // close the menu when clicking a link from the menu
-    this.menu.close();
-    // navigate to the new page if it is not the current page
-    this.nav.setRoot(page.component);
+  public openPage(page: { title: string; url: string }): void {
+    this.router.navigateByUrl(page.url);
   }
 }

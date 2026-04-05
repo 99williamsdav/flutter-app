@@ -5,6 +5,12 @@ import { FlutterService } from './flutter';
 
 declare let cordova: any;
 
+interface NotificationUpdate {
+  type: string;
+  profit: number | null;
+  trend: boolean | null;
+}
+
 @Injectable()
 export class NotificationService {
 
@@ -14,7 +20,7 @@ export class NotificationService {
     requestPermission: (opts => console.log(opts))
   };
 
-  private static NOTIFICATION_ID: 1234;
+  private static NOTIFICATION_ID: number = 1234;
   private static DOWN_ICON: string = 'file://assets/imgs/down.png' ;
   private static UNKNOWN_ICON: string = 'file://assets/imgs/unknown.png';
   private static UP_ICON: string = 'file://assets/imgs/up.png';
@@ -102,7 +108,7 @@ export class NotificationService {
     return cordova.plugins.notification.local;
   }
 
-  private notify({ type, profit, trend }): void {
+  private notify({ type, profit, trend }: NotificationUpdate): void {
 
     if (!this.enabled) {
       return;

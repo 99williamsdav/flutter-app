@@ -3,6 +3,19 @@
 import {EventEmitter, Injectable, NgZone} from '@angular/core';
 import { PollingService } from './polling';
 
+interface FlutterUpdateEvent {
+  type: 'IN_PLAY' | 'OVERALL' | 'SNOWBALL';
+  profit: number;
+  trend: boolean;
+}
+
+interface PollingUpdateEvent {
+  profit: number;
+  cashout: number;
+  expected: number;
+  trend: boolean;
+}
+
 @Injectable()
 export class FlutterService {
 
@@ -14,7 +27,7 @@ export class FlutterService {
   private overall: PollingService;
   private snowball: PollingService;
 
-  public profitUpdate: EventEmitter<{}> = new EventEmitter<{}>();
+  public profitUpdate: EventEmitter<FlutterUpdateEvent> = new EventEmitter<FlutterUpdateEvent>();
 
   constructor(zone: NgZone) {
     this.inPlay = new PollingService(FlutterService.IN_PLAY_URL, zone);
@@ -22,11 +35,14 @@ export class FlutterService {
     this.snowball = new PollingService(FlutterService.SNOWBALL_URL, zone);
 
     this.inPlay.profitUpdate
-      .subscribe(({profit, trend}) => this.profitUpdate.emit({type: 'IN_PLAY', profit, trend}));
+      .asObservable()
+      .subscribe(({profit, trend}: PollingUpdateEvent) => this.profitUpdate.emit({type: 'IN_PLAY', profit, trend}));
     this.overall.profitUpdate
-      .subscribe(({profit, trend}) => this.profitUpdate.emit({type: 'OVERALL', profit, trend}));
+      .asObservable()
+      .subscribe(({profit, trend}: PollingUpdateEvent) => this.profitUpdate.emit({type: 'OVERALL', profit, trend}));
     this.snowball.profitUpdate
-      .subscribe(({profit, trend}) => this.profitUpdate.emit({type: 'SNOWBALL', profit, trend}));
+      .asObservable()
+      .subscribe(({profit, trend}: PollingUpdateEvent) => this.profitUpdate.emit({type: 'SNOWBALL', profit, trend}));
 
   }
 

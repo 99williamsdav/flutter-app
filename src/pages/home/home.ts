@@ -3,7 +3,7 @@ import { FlutterService } from '../../app/services/flutter';
 import { NotificationService } from '../../app/services/notification';
 
 @Component({
-  selector: 'page-home',
+  selector: 'app-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
