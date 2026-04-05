@@ -1,18 +1,34 @@
 {
   "name": "flutter-app",
   "version": "0.0.1",
+  "engines": {
+    "node": ">=14 <15",
+    "npm": ">=6 <7"
+  },
+  "scripts": {
+    "build": "ionic-app-scripts build",
+    "start": "ionic-app-scripts serve",
+    "ionic:build": "ionic-app-scripts build",
+    "ionic:serve": "ionic-app-scripts serve"
+  },
   "dependencies": {
     "@angular/core": "5.2.11",
     "@angular/common": "~5.2.11",
+    "@angular/forms": "~5.2.11",
     "@angular/platform-browser": "~5.2.11",
     "@angular/platform-browser-dynamic": "~5.2.11",
     "@angular/http": "~5.2.11",
     "@angular/router": "~5.2.11",
+    "@ionic-native/core": "4.20.0",
+    "@ionic-native/splash-screen": "4.20.0",
+    "@ionic-native/status-bar": "4.20.0",
     "ionic-angular": "3.9.10",
+    "moment": "^2.30.1",
     "rxjs": "~5.5.10",
     "zone.js": "~0.8.29"
   },
   "devDependencies": {
+    "@ionic/app-scripts": "3.2.4",
     "@angular/compiler-cli": "5.2.11",
     "typescript": "~2.4.2",
     "sass": "^1.77.0"

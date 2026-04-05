@@ -6,8 +6,10 @@ Mobile app for [FlutterBot](http://flutterbot.co.uk/)
 
 ## Prerequisites
 
-* [Node LTS](https://nodejs.org/en/)
+* Node 14.x with npm 6.x
 * Ionic and Cordova: `npm install -g ionic@4.1.2 cordova@8.0.0`
+
+If you are on newer Node (for example Node 24), switch to Node 14 before installing dependencies.
 
 ## Install
 
