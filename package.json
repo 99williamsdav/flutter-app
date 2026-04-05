@@ -12,7 +12,7 @@
   , 
     "@angular/router": "~5.2.11"
   , 
-    "ionic-angular": "3.9.11"
+    "ionic-angular": "3.9.10"
   , 
     "rxjs": "~5.5.10"
   , 
