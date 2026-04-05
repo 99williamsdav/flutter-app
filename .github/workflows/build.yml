@@ -1,0 +1,57 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "**" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Ionic CLI and Cordova
+        run: npm install -g @ionic/cli cordova
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android build tools
+        run: sdkmanager "build-tools;34.0.0" "platforms;android-34"
+
+      - name: Add Android platform
+        run: ionic cordova platform add android --confirm
+
+      - name: Build Android APK
+        run: ionic cordova build android --release -- -- --packageType=apk
+
+      - name: Rename APK
+        run: |
+          APK_PATH=$(find platforms/android/app/build/outputs/apk -name "*.apk" | head -1)
+          cp "$APK_PATH" flutter-app.apk
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: flutter-app
+          path: flutter-app.apk
